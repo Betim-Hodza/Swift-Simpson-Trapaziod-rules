@@ -78,10 +78,9 @@ func printMenu() {
 }
 
 func printingNote() {
-    print("\nNote, when inputting a function you can write it like this: e.g. x + x^2 or (x*5)^2 or (x * 5) / 2.")
+    print("\nNote, when inputting a function you can write it like this: e.g. x + x * x or (x * 5) * 2 or (x * 5) / 2.")
     print("Parenthesis work as intended")
-    print("The following constants work: pi, e")
-    print("Note: This Swift version uses NSExpression which might not support all functions from the original C version.")
+    print("Note: This Swift version uses NSExpression which might not support all functions from the original C version, be sure to space out operations.")
 }
 
 // Main 
