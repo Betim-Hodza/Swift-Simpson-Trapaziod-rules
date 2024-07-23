@@ -61,7 +61,7 @@ func trapezoidalApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double)
         let f_x = evaluateExpression(function, withVariable: x)
 
         // if i is not the first or last term, multiply f_x by 2 and add to sum
-        if i > 1 && i < (N-1) {
+        if i > 1 || i < (N-1) {
             sum += 2 * f_x
         }
     }
