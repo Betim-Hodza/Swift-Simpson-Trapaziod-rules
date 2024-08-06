@@ -84,7 +84,7 @@ func midpointApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double) ->
 
     for i in 1..<N {
         //get current x val
-        x = Double(a) 
+        x = Double(a) + Double(i)
 
         if i > 1 || i < (N-1) {
             //eval f at x 
