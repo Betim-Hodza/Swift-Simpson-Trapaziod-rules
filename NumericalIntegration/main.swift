@@ -69,11 +69,38 @@ func trapezoidalApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double)
     return (deltaX / 2) * sum
 }
 
+func midpointApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double) -> Double {
+    
+    var sum = 0.0
+    var x = Double(a)
+
+    //evaul f at a and b
+    let f_a = evaluateExpression(function, withVariable: x) + (deltaX / 2)
+    x = Double(b)
+    let f_b = evaluateExpression(function, withVariable: x) - (deltaX / 2)
+
+    //at first and last terms
+    sum = f_a + f_b 
+
+    for i in 1..<N {
+        //get current x val
+        x = Double(a) 
+
+        if i > 1 || i < (N-1) {
+            //eval f at x 
+            sum += evaluateExpression(function, withVariable: x) + ((3 * deltaX) / 2)
+        }
+    }
+
+    return deltaX * sum
+}
+
 func printMenu() {
     print("Simpsons & Trapezoidal Algorithm")
     print("choose a number out of the list:")
     print("1. Simpsons")
     print("2. Trapezoidal")
+    print("3. Midpoint")
     print("Please input the algorithm you want to use:")
 }
 
@@ -86,7 +113,7 @@ func printingNote() {
 // Main 
 printMenu()
 
-guard let choice = readLine(), (choice == "1" || choice == "2") else {
+guard let choice = readLine(), (choice == "1" || choice == "2" || choice == "3") else {
     print("Invalid choice. Exiting.")
     exit(1)
 }
@@ -122,7 +149,10 @@ let deltaX = Double(b - a) / Double(N)
 if choice == "1" {
     let sum = simpsonsApprox(N: N, b: b, a: a, function: function, deltaX: deltaX)
     print("Simpsons Approximation of the integral from \(a)-\(b) of \(function) = \(sum)")
-} else {
+} else if choice == "2" {
     let sum = trapezoidalApprox(N: N, b: b, a: a, function: function, deltaX: deltaX)
     print("Trapezoidal Approximation of the integral from \(a)-\(b) of \(function) = \(sum)")
+} else {
+    let sum = midpointApprox(N: N, b: b, a: a, function: function, deltaX: deltaX)
+    print("Midpoint Approximation of the integral from \(a)-\(b) of \(function) = \(sum)")
 }
