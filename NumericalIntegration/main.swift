@@ -80,7 +80,7 @@ func midpointApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double) ->
     let f_b = evaluateExpression(function, withVariable: x) - (deltaX / 2)
 
     //at first and last terms
-    sum = f_a + f_b 
+    sum = f_a + f_b
 
     for i in 1..<N {
         //get current x val
