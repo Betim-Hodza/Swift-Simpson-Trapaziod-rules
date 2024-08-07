@@ -84,11 +84,11 @@ func midpointApprox(N: Int, b: Int, a: Int, function: String, deltaX: Double) ->
 
     for i in 1..<N {
         //get current x val
-        x = Double(a) + Double(i)
+        x = Double(a) + ( Double(i) * deltaX) * (deltaX / 2)
 
         if i > 1 || i < (N-1) {
             //eval f at x 
-            sum += evaluateExpression(function, withVariable: x) + ((3 * deltaX) / 2)
+            sum += evaluateExpression(function, withVariable: x)
         }
     }
 
